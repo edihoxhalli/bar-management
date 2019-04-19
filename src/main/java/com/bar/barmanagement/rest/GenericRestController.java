@@ -1,19 +1,16 @@
 package com.bar.barmanagement.rest;
 
 import com.bar.barmanagement.domain.service.GenericService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-public abstract class GenericRestController <T>{
-    private GenericService<T> service;
+public abstract class GenericRestController <T, U>{
+    private GenericService<T, U> service;
 
     public GenericRestController(){}
 
-    public GenericRestController(GenericService<T> service){
+    public GenericRestController(GenericService<T, U> service){
         this.service = service;
     }
 
@@ -32,7 +29,7 @@ public abstract class GenericRestController <T>{
         service.save(t);
     }
 
-    @GetMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         service.delete(id);
     }

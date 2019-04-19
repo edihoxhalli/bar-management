@@ -1,5 +1,7 @@
 package com.bar.barmanagement.domain.service;
 
-public interface ProductService<Product> extends GenericService<Product>{
+import com.bar.barmanagement.model.entity.Product;
+
+public interface ProductService<Product> extends GenericService<Product, com.bar.barmanagement.model.entity.Product>{
 
 }

@@ -1,0 +1,16 @@
+com\bar\barmanagement\model\entity\Product.class
+com\bar\barmanagement\domain\service\GenericService.class
+com\bar\barmanagement\rest\ProductRestController.class
+com\bar\barmanagement\domain\service\GenericServiceImpl.class
+com\bar\barmanagement\util\CustomBeans.class
+com\bar\barmanagement\domain\mapper\BidirectionalMapper.class
+com\bar\barmanagement\domain\mapper\ProductMapperImpl.class
+com\bar\barmanagement\domain\service\ProductService.class
+com\bar\barmanagement\domain\dto\Product.class
+com\bar\barmanagement\domain\mapper\ProductMapper.class
+com\bar\barmanagement\rest\GenericRestController.class
+com\bar\barmanagement\BarManagementApplication.class
+com\bar\barmanagement\domain\dto\Category.class
+com\bar\barmanagement\domain\service\ProductServiceImpl.class
+com\bar\barmanagement\domain\mapper\MapperFactory.class
+com\bar\barmanagement\model\repository\ProductRepository.class

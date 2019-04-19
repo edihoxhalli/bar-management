@@ -6,23 +6,31 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public abstract class GenericServiceImpl<T, U> implements GenericService{
-    @Autowired
-    private JpaRepository<T, Long> repository;
+import static java.util.stream.Collectors.toList;
+
+public abstract class GenericServiceImpl<T, U> implements GenericService<T, U>{
+
+    private JpaRepository<U, Long> repository;
+    private BidirectionalMapper<T, U> mapper;
 
     @Autowired
-    BidirectionalMapper<T, U> mapper;
+    public GenericServiceImpl(JpaRepository<U, Long> repository, BidirectionalMapper<T, U> mapper){
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     public List<T> getAll() {
-        return repository.findAll();
+        List<U> entities = repository.findAll();
+        return mapper.toDtos(entities);
     }
 
     public T getById(Long id) {
-        return (T) repository.findById(id);
+        return (T) mapper.toDto(repository.findById(id).get());
     }
 
     public void save(Object t) {
-        repository.save((T) t);
+        U entity = (U) mapper.toEntity((T) t);
+        repository.save(entity);
     }
 
     public void delete(Long id) {
